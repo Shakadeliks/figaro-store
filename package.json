@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
   
-    "start": "node ./src/index.js",
+    "start": "node src/index.js",
     "heroku-postbuild": "cd figaro-front-end && npm install && npm run build"
   },
   "author": "Olwethu \"Shak\" Matiwana",
