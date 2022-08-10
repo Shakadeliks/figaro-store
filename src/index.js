@@ -1,21 +1,21 @@
-const express = require('express');
+import express, { json } from 'express';
 const app = express();
-const dotenv = require('dotenv');
-const mongoose = require('mongoose')
+import { config } from 'dotenv';
+import { connect } from 'mongoose';
 // ROUTES
-const userRoute = require('./routes/user');
-const authRoute = require('./Routes/auth');
-const productRoute = require('./Routes/product');
-const cartRoute = require('./Routes/cart');
-const orderRoute = require('./Routes/order');
-const stripeRoute = require('./Routes/stripe');
-const cors = require('cors');
+import userRoute from './routes/user';
+import authRoute from './Routes/auth';
+import productRoute from './Routes/product';
+import cartRoute from './Routes/cart';
+import orderRoute from './Routes/order';
+import stripeRoute from './Routes/stripe';
+import cors from 'cors';
 
 //MIDDLEWARE
 
 
 // environment variable 
-dotenv.config();
+config();
 //MONGODB CONNECTION 
 // mongodb+srv://olwethumatiwana:<password>@figaro.nekq8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 const port = process.env.PORT || 3000;
@@ -30,8 +30,8 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/order", orderRoute);
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "../figaro-front-end/build")))
+app.use(json());
+app.use(path.join(__dirname, "../figaro-front-end/build"))
 
 app.get('*', (req, res) => {
     res.sendFile(path.join((__dirname, "../figaro-front-end/build", "index.html")))
@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => console.log(`server is at port ${port}`));
 
-mongoose.connect(DbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+connect(DbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("db connected"))
     .catch((error) => console.log(error));    
 
