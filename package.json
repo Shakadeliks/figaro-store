@@ -1,10 +1,12 @@
 {
   "name": "figaro-back-end",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "backend rest api server for figaro e-commerce store",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-  
     "start": "node src/index.js",
     "heroku-postbuild": "cd figaro-front-end && npm install && npm run build"
   },
@@ -14,6 +16,7 @@
     "@stripe/stripe-js": "^1.24.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
+    "check-node-version": "^4.2.1",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.0",

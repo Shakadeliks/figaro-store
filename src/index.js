@@ -40,6 +40,6 @@ app.get('*', (req, res) => {
 app.listen(port, () => console.log(`server is at port ${port}`));
 
 mongoose.connect(DbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => console.log("db connected"))
+    .then(() => console.log("db connected"))
     .catch((error) => console.log(error));    
 
